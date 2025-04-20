@@ -1,2 +1,2 @@
-# sql-by--example
+# sql-by-example
  SQL examples  etc.. 
