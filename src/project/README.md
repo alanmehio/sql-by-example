@@ -10,4 +10,12 @@ We need the members to create such a table base on describing each table
 After that the member needs to populate the table with data
 After that the member needs query different table based on different question 
 
-I will get involved with you but you need to start 
+Iso: you need to specify the queries to do in point 4 .
+   Add more tables if you can to complete the second hand car database
+
+1- Draw the sql schematic based the sql script in car.sql
+2- open the database "card.db" from sqlitebrowser and see how to build new tables and export ( uage )
+3- You need to build python modules to populate the tables with data
+4- You need to show how to search and retrieve pretty print (pprint) of the different data
+
+
