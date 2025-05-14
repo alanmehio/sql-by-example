@@ -145,6 +145,16 @@ def show_sellers_total():
     total = c.fetchall()
     pprint(total)
 
+def manufacturer_total_cars():
+    print("\nTotal cars for each manufacturer: ")
+    c.execute("""select count(*) as total, m.name from car
+              join manufacturer m on m.id = manufacturer_id
+              group by m.name""")
+    column_names = [description[0] for description in c.description]
+    print(" | ".join(column_names))
+    total = c.fetchall()
+    pprint(total)
+
 add_seller("iso","iso@gmail.com","beirut","71 52 42 32")
 add_seller("john","john@gmail.com","new york","0002 324 43")
 add_seller("sza","sza@hotmai.com","berlin","2132 43534 23")
@@ -170,14 +180,13 @@ add_car("m4",1900,1,1,"no")
 add_car("m8",1000,1,1,"no")
 add_car("accent",7000,9,2,"no")
 add_car("xc90",4000,2,1,"no")
-add_car("yaris",0,7,2,"no")
 add_car("activa",0,5,3,"no")
 add_car("A5",0,3,1,"no")
 add_car("Q7",12000,3,1,"no")
 add_car("c197 amg",20000,4,4,"no")
 add_car("mustang",0,5,3,"no")
 add_car("accord",300,6,4,"no")
-
+add_car("R8",300,3,2,"no")
 
 sell_car(1,1,"12/5/2025","7000$")
 sell_car(3,2,"12/5/2025","2100$")
@@ -193,5 +202,7 @@ show_average_sold()
 
 show_cars_with_mileage(2000)
 show_sellers_total()
+
+manufacturer_total_cars()
 
 conn.close()
