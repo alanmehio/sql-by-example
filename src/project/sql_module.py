@@ -126,9 +126,24 @@ def show_average_sold():
     sales = c.fetchall()
     pprint(sales)
 
+def show_cars_with_mileage(mileage):
+    print(f"\nCars with mileage less than {mileage} miles: ")
+    c.execute("select description, mileage from car where mileage <= :mile", {'mile':mileage})
+    column_names = [description[0] for description in c.description]
+    print(" | ".join(column_names))
+    cars = c.fetchall()
+    pprint(cars)
 
-
-
+def show_sellers_total():
+    print("\nSeller's total: $")
+    c.execute("""select s.name, sum(sale_price) as total from sale sa
+              join car c on car_id = c.id
+              join seller s on c.seller_id = s.id
+              group by s.name""")
+    column_names = [description[0] for description in c.description]
+    print(" | ".join(column_names))
+    total = c.fetchall()
+    pprint(total)
 
 add_seller("iso","iso@gmail.com","beirut","71 52 42 32")
 add_seller("john","john@gmail.com","new york","0002 324 43")
@@ -136,10 +151,10 @@ add_seller("sza","sza@hotmai.com","berlin","2132 43534 23")
 add_seller("peter","peter@gmail.com","new york","23 4332 3431")
 
 
-add_customer("re","re@gmail.com","2343 54")
-add_customer("ab","ab@gmail.com","23 34 1232")
-add_customer("rod","rod@gmail.com","324 2134 21")
-add_customer("sim","sim@hotmail.com","213 43 2298")
+add_customer("jess","re@gmail.com","2343 54")
+add_customer("abdo","ab@gmail.com","23 34 1232")
+add_customer("rodi","rod@gmail.com","324 2134 21")
+add_customer("brock","sim@hotmail.com","213 43 2298")
 
 add_manuf("bmw","germany")
 add_manuf("volvo","sweden")
@@ -151,29 +166,32 @@ add_manuf("toyota","japan")
 add_manuf("nissan","japan")
 add_manuf("hyundai","south korea")
 
-add_car("m4",1000,1,1,"no")
+add_car("m4",1900,1,1,"no")
 add_car("m8",1000,1,1,"no")
-add_car("accent",7000,9,1,"no")
+add_car("accent",7000,9,2,"no")
 add_car("xc90",4000,2,1,"no")
-add_car("yaris",0,7,1,"no")
-add_car("activa",0,5,1,"no")
+add_car("yaris",0,7,2,"no")
+add_car("activa",0,5,3,"no")
 add_car("A5",0,3,1,"no")
 add_car("Q7",12000,3,1,"no")
-add_car("c197 amg",20000,4,1,"no")
-add_car("mustang",0,5,1,"no")
-add_car("accord",300,6,1,"no")
+add_car("c197 amg",20000,4,4,"no")
+add_car("mustang",0,5,3,"no")
+add_car("accord",300,6,4,"no")
 
 
 sell_car(1,1,"12/5/2025","7000$")
-sell_car(3,1,"12/5/2025","2000$")
-sell_car(4,1,"12/5/2025","9000$")
-sell_car(6,1,"12/5/2025","4500$")
-sell_car(9,1,"12/5/2025","2500$")
+sell_car(3,2,"12/5/2025","2100$")
+sell_car(4,2,"12/5/2025","9000$")
+sell_car(5,4,"12/5/2025","4500$")
+sell_car(9,3,"12/5/2025","2500$")
 
 list_unsold_cars()
 show_cars_by("audi")
 show_customers()
 show_sales_record()
 show_average_sold()
+
+show_cars_with_mileage(2000)
+show_sellers_total()
 
 conn.close()
