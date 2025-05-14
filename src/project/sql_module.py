@@ -131,22 +131,44 @@ def show_average_sold():
 
 
 add_seller("iso","iso@gmail.com","beirut","71 52 42 32")
+add_seller("john","john@gmail.com","new york","0002 324 43")
+add_seller("sza","sza@hotmai.com","berlin","2132 43534 23")
+add_seller("peter","peter@gmail.com","new york","23 4332 3431")
+
+
 add_customer("re","re@gmail.com","2343 54")
+add_customer("ab","ab@gmail.com","23 34 1232")
+add_customer("rod","rod@gmail.com","324 2134 21")
+add_customer("sim","sim@hotmail.com","213 43 2298")
 
 add_manuf("bmw","germany")
 add_manuf("volvo","sweden")
 add_manuf("audi","germany")
+add_manuf("mercedes","germany")
+add_manuf("ford","usa")
+add_manuf("honda","japan")
+add_manuf("toyota","japan")
+add_manuf("nissan","japan")
+add_manuf("hyundai","south korea")
 
 add_car("m4",1000,1,1,"no")
 add_car("m8",1000,1,1,"no")
+add_car("accent",7000,9,1,"no")
 add_car("xc90",4000,2,1,"no")
+add_car("yaris",0,7,1,"no")
+add_car("activa",0,5,1,"no")
 add_car("A5",0,3,1,"no")
+add_car("Q7",12000,3,1,"no")
+add_car("c197 amg",20000,4,1,"no")
+add_car("mustang",0,5,1,"no")
+add_car("accord",300,6,1,"no")
 
 
 sell_car(1,1,"12/5/2025","7000$")
 sell_car(3,1,"12/5/2025","2000$")
 sell_car(4,1,"12/5/2025","9000$")
-
+sell_car(6,1,"12/5/2025","4500$")
+sell_car(9,1,"12/5/2025","2500$")
 
 list_unsold_cars()
 show_cars_by("audi")
