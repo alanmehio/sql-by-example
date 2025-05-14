@@ -155,6 +155,16 @@ def manufacturer_total_cars():
     total = c.fetchall()
     pprint(total)
 
+def country_total_cars():
+    print("\nTotal cars for each country: ")
+    c.execute("""select count(*) as total, m.country from car
+              join manufacturer m on m.id = manufacturer_id
+              group by m.country""")
+    column_names = [description[0] for description in c.description]
+    print(" | ".join(column_names))
+    total = c.fetchall()
+    pprint(total)    
+
 add_seller("iso","iso@gmail.com","beirut","71 52 42 32")
 add_seller("john","john@gmail.com","new york","0002 324 43")
 add_seller("sza","sza@hotmai.com","berlin","2132 43534 23")
@@ -204,5 +214,6 @@ show_cars_with_mileage(2000)
 show_sellers_total()
 
 manufacturer_total_cars()
+country_total_cars()
 
 conn.close()
