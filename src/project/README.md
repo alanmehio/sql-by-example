@@ -1,21 +1,29 @@
-In this project you need to create  a database for second had car selling portal
+# Project
 
-Iso: try to find the specification for this like a car table which has the following:
-model, made, milage, price , sold (status if car is sold)
-another table which contains the manufacturer details for example in the car table , the Mercedes cars has a FK related to PK in the manufacturer  details 
+This project is seperated into two files (create_tables.py, sql_module.py). 
 
-A table contains a sale; sales details information about the customer ( another table) and the card soled ( reference  to car table )
+1- create_tables.py is a script that creates the database named dealer.db. It creates it inside the folder named "database" which is at the same level as "src". There is no need to run this file as it already created the database and you will get an error. Unless you want to create a new data base with empty tables, you can delete the old data base and run this file again. 
 
-We need the members to create such a table base on describing each table 
-After that the member needs to populate the table with data
-After that the member needs query different table based on different question 
+This file also creates the tables with the relations between them using foreign keys.
 
-Iso: you need to specify the queries to do in point 4 .
-   Add more tables if you can to complete the second hand car database
+2- sql_module.py is a script that contain a class called "DetailDataBaseManager" which is responsible for opening the database "dealer.db" in the database folder. It also contain methods for adding into the tables, selling cars, doing several complex queries like show_cars_by("audi") which shows all cars by this brand, you can try any brand you want. 
 
-1- Draw the sql schematic based the sql script in car.sql
-2- open the database "card.db" from sqlitebrowser and see how to build new tables and export ( uage )
-3- You need to build python modules to populate the tables with data
-4- You need to show how to search and retrieve pretty print (pprint) of the different data
+You can run the file to see the result for all the different queries I added.
+I also commented out the code that I used to add data into the tables. The members are going to add data through the app and not in code.
 
+## Development
 
+The requirements from the members are:
+
+1- Create a branch after your name so we can keep track of each member. So for example "git checkout -b ISO-branch" and then start working on the bellow.
+
+2- Use sqlitebrowser that you installed to open the "dealer.db" database and manipulate the data. Which means you have to add several data into all the tables. Using the application itself. 
+
+3- After changing and saving into the database, you have to add several more methods into the "DetailDatabaseManager" inside the file sql_module.py file.
+The methods should do the following queries:
+    1- Calculate the total sold cars for each brand.
+    2- Calculate the average sales for each country.
+    3- Show the cars that are new (not used) so it should have 0 miles.
+    4- Calculate the average price of cars for a given brand. 
+
+    Those methods add them inside the class under the other methods and if you need any hint for them, ask for hints.
