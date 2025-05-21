@@ -11,7 +11,7 @@ This file also creates the tables with the relations between them using foreign 
 You can run the file to see the result for all the different queries I added.
 I also commented out the code that I used to add data into the tables. The members are going to add data through the app and not in code.
 
-## Required
+## Development
 
 The requirements from the members are:
 
