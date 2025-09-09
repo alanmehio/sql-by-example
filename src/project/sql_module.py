@@ -137,11 +137,51 @@ class DetailDataBaseManager():
         total = cls.c.fetchall()
         pprint(total)    
 
+#rewan
+
+    @classmethod
+    def sold_cars_brands(cls):
+        print("\n Total sold cars for each brand:")
+        cls.c.execute("select count(id),description from car where sold='yes' group by description ")
+        column_names=[description[0] for description in cls.c.description]
+        print(" | ".join(column_names))
+        notused_cars=cls.c.fetchall()
+        pprint(notused_cars)
+
+    @classmethod
+    def average_sale_country(cls):
+        print("\n Total averge sales for each country:")
+        cls.c.execute("select avg(id),address from seller group by address  ")
+        column_names=[description[0] for description in cls.c.description]
+        print(" | ".join(column_names))
+        notused_cars=cls.c.fetchall()
+        pprint(notused_cars)
+
+    @classmethod
+    def cars_not_used(cls):
+        print("\n Total cars that are not used :")
+        cls.c.execute("select * from car where mileage=0")
+        column_names=[description[0] for description in cls.c.description]
+        print(" | ".join(column_names))
+        notused_cars=cls.c.fetchall()
+        pprint(notused_cars)
+
+
+    @classmethod
+    def average_price_cars(cls):
+        print("\n Total Average price of cars for a given brand:")
+        cls.c.execute("select avg(price),description from car where description='m4'  ")
+
+        notused_cars=cls.c.fetchall()
+        pprint(notused_cars)
+    
+
 '''
 DetailDataBaseManager.add_customer("jess","re@gmail.com","2343 54")
 DetailDataBaseManager.add_customer("abdo","ab@gmail.com","23 34 1232")
 DetailDataBaseManager.add_customer("rodi","rod@gmail.com","324 2134 21")
 DetailDataBaseManager.add_customer("brock","sim@hotmail.com","213 43 2298")
+
 
 DetailDataBaseManager.add_seller("iso","iso@gmail.com","beirut","71 52 42 32")
 DetailDataBaseManager.add_seller("john","john@gmail.com","new york","0002 324 43")
@@ -177,6 +217,12 @@ DetailDataBaseManager.sell_car(5,4,"12/5/2025","4500$")
 DetailDataBaseManager.sell_car(9,3,"12/5/2025","2500$")
 '''
 
+'''
+DetailDataBaseManager.add_car("rangrover",0,9,1,"no")
+DetailDataBaseManager.add_car("mustang",0,5,3,"yes")
+
+'''
+
 DetailDataBaseManager.list_unsold_cars()
 DetailDataBaseManager.show_cars_by("audi")
 DetailDataBaseManager.show_customers()
@@ -188,3 +234,9 @@ DetailDataBaseManager.show_sellers_total()
 
 DetailDataBaseManager.manufacturer_total_cars()
 DetailDataBaseManager.country_total_cars()
+
+#rewan
+DetailDataBaseManager.sold_cars_brands()
+DetailDataBaseManager.average_sale_country()
+DetailDataBaseManager.cars_not_used()
+DetailDataBaseManager.average_price_cars()
